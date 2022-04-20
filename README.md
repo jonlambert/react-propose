@@ -2,7 +2,7 @@
 
 _Note: Project is under active development_
 
-This package exposes a tiny (fully type-safe) helper function allowing you to compose props from a parent component. Promoting ease of composition - drill down layer by layer by refining each prop.
+This package exposes a tiny (465 b) helper function allowing you to compose props from a parent component. Promoting ease of composition - drill down layer by layer by refining each prop, with full TypeScript support.
 
 ```tsx
 // Given a base component...
