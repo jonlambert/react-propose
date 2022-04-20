@@ -1,0 +1,19 @@
+{
+  "name": "react-propose",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "author": "Jon Lambert <jon@evada.co>",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^17.0.44",
+    "typescript": "^4.6.3"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2"
+  }
+}
