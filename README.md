@@ -1,8 +1,5 @@
 # React Propose
 
-![minzip size](https://badgen.net/bundlephobia/minzip/react-propose)
-![dependency count](https://badgen.net/bundlephobia/dependency-count/react-propose)
-
 _Note: Project is under active development_
 
 This package exposes a tiny (fully type-safe) helper function allowing you to compose props from a parent component. Promoting ease of composition - drill down layer by layer by refining each prop.
