@@ -10,7 +10,7 @@ TODO:
 
 - [x] Decorate functional components
 - [ ] Support forwarding refs
-- [ ] Support intrinsic elements
+- [x] Support intrinsic elements
 
 ```tsx
 // Given a base component...
