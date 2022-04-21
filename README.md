@@ -2,7 +2,7 @@
 
 Props, composed.
 
-This package exposes a tiny (<1kb), 0 dependency helper function allowing you to compose props from a parent component. Promoting ease of composition - drill down layer by layer by refining each prop, with full TypeScript support.
+This package exposes a tiny (<1kb), zero dependency helper function allowing you to compose props from a parent component. Promoting ease of composition - drill down layer by layer by refining each prop, with full TypeScript support.
 
 _Note: Project is under active development_
 
