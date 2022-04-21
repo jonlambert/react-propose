@@ -1,8 +1,16 @@
 # React Propose
 
+Props, composed.
+
+This package exposes a tiny (465 b), 0 dependency helper function allowing you to compose props from a parent component. Promoting ease of composition - drill down layer by layer by refining each prop, with full TypeScript support.
+
 _Note: Project is under active development_
 
-This package exposes a tiny (465 b) helper function allowing you to compose props from a parent component. Promoting ease of composition - drill down layer by layer by refining each prop, with full TypeScript support.
+TODO:
+
+- [x] Decorate functional components
+- [ ] Support forwarding refs
+- [ ] Support intrinsic elements
 
 ```tsx
 // Given a base component...

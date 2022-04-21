@@ -1,6 +1,5 @@
-import {
+import React, {
   createElement,
-  forwardRef,
   JSXElementConstructor,
   ComponentProps,
 } from 'react';
@@ -12,11 +11,10 @@ export function propose<
 >(Component: ComponentType, props: SuppliedProps, displayName?: string) {
   type FinalProps = Omit<OriginalProps, keyof SuppliedProps>;
 
-  const NewComponent = forwardRef<any, FinalProps>((ref, p) => {
-    const combinedProps = { ...props, ...p, ref };
+  const NewComponent: React.FC<FinalProps> = (p) => {
+    const combinedProps = { ...props, ...p };
     return createElement(Component, combinedProps);
-  });
-
+  };
   NewComponent.displayName = displayName;
 
   return NewComponent;

@@ -1,19 +1,24 @@
 {
   "name": "react-propose",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "tsc"
   },
   "author": "Jon Lambert <jon@evada.co>",
   "license": "ISC",
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.1.1",
+    "@types/jest": "^27.4.1",
     "@types/react": "^17.0.44",
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.4",
     "typescript": "^4.6.3"
   },
   "peerDependencies": {
-    "react": "^17.0.2"
+    "react": "^17.0.2 || ^18.0.0"
   }
 }
