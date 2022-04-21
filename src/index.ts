@@ -4,8 +4,10 @@ import React, {
   ComponentProps,
 } from 'react';
 
+type IntrinsicElementKeys = keyof JSX.IntrinsicElements;
+
 export function propose<
-  ComponentType extends JSXElementConstructor<any>,
+  ComponentType extends JSXElementConstructor<any> | IntrinsicElementKeys,
   OriginalProps extends ComponentProps<ComponentType>,
   SuppliedProps extends Partial<OriginalProps>
 >(Component: ComponentType, props: SuppliedProps, displayName?: string) {

@@ -18,7 +18,7 @@ describe('propose', () => {
     }) => (
       <div>
         <h1>{title}</h1>
-        <caption>{message}</caption>
+        <div>{message}</div>
       </div>
     );
 
@@ -30,4 +30,10 @@ describe('propose', () => {
     expect(getByRole('heading')).toHaveTextContent(title);
     expect(getByText(message)).toBeInTheDocument();
   });
+
+  it('supports intrinsic elements', () => {
+    const Decorated = propose('h2', { 'aria-label': 'test-label' });
+    const { getByLabelText } = render(<Decorated>Hello, world</Decorated>);
+    expect(getByLabelText('test-label')).toHaveTextContent('Hello, world');
+  })
 });
