@@ -38,7 +38,7 @@ const FooBarMessage = propose(BaseMessage, { title: 'Foo' });
 
 ## With Chakra UI
 
-`styled-system` introduced a remarkably simple API to apply atomic styles to a component. Use `propose()` to achieve a similar DX, with full autocompletion and type safety:
+`styled-components` introduced a remarkably simple API to apply atomic styles to a component. Use `propose()` to achieve a similar DX, with full autocompletion and type safety:
 
 ```ts
 import { propose } from 'react-propose';
