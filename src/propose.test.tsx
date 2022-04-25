@@ -1,5 +1,5 @@
 import 'jest';
-import '@testing-library/jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect';
 
 import React from 'react';
 import { render } from '@testing-library/react';
@@ -35,5 +35,21 @@ describe('propose', () => {
     const Decorated = propose('h2', { 'aria-label': 'test-label' });
     const { getByLabelText } = render(<Decorated>Hello, world</Decorated>);
     expect(getByLabelText('test-label')).toHaveTextContent('Hello, world');
-  })
+  });
+
+  it('can override pre-defined props', () => {
+    const Base: React.FC<{ message: string; title?: string }> = ({
+      message,
+      title,
+    }) => (
+      <div>
+        <h1>{title}</h1>
+        <div>{message}</div>
+      </div>
+    );
+
+    const Decorated = propose(Base, { title: 'Hello', message: 'World' });
+    const { getByRole } = render(<Decorated title="Foo" message="Bar" />);
+    expect(getByRole('heading')).toHaveTextContent('Foo');
+  });
 });
