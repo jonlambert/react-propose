@@ -11,7 +11,8 @@ export function propose<
   OriginalProps extends ComponentProps<ComponentType>,
   SuppliedProps extends Partial<OriginalProps>
 >(Component: ComponentType, props: SuppliedProps, displayName?: string) {
-  type FinalProps = Omit<OriginalProps, keyof SuppliedProps> & Partial<SuppliedProps>;
+  type FinalProps = Omit<OriginalProps, keyof SuppliedProps> &
+    Partial<SuppliedProps>;
 
   const NewComponent: React.FC<FinalProps> = (p) => {
     const combinedProps = { ...props, ...p };

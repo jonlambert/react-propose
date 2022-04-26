@@ -11,6 +11,7 @@ describe('propose', () => {
     const Decorated = propose(Base, { message: 'hello, world' }, 'Decorated');
     expect(Decorated.displayName).toBe('Decorated');
   });
+
   it('renders correctly', () => {
     const Base: React.FC<{ message: string; title?: string }> = ({
       message,
@@ -51,5 +52,25 @@ describe('propose', () => {
     const Decorated = propose(Base, { title: 'Hello', message: 'World' });
     const { getByRole } = render(<Decorated title="Foo" message="Bar" />);
     expect(getByRole('heading')).toHaveTextContent('Foo');
+  });
+
+  it('respects inherited props', () => {
+    interface SharedLinkProps {
+      variant: 'primary' | 'secondary';
+    }
+    interface LinkButtonProps
+      extends SharedLinkProps,
+        Pick<
+          React.DetailedHTMLProps<
+            React.ButtonHTMLAttributes<HTMLButtonElement>,
+            HTMLButtonElement
+          >,
+          'onClick'
+        > {}
+
+    const Base: React.FC<LinkButtonProps> = () => <div></div>;
+
+    const Derived = propose(Base, { variant: 'primary' });
+    render(<Derived onClick={() => {}} variant="primary" />);
   });
 });
