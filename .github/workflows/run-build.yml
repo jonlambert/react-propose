@@ -21,12 +21,12 @@ jobs:
           node-version: '17'
       - run: npm ci
       - run: npm test
-      - run: npm build
+      - run: npm run build
 
   publish:
     name: 'Publish to NPM'
     needs: test
-    if: github.repository == 'jonlambert/react-propose' && (github.ref == 'refs/heads/main'
+    if: github.repository == 'jonlambert/react-propose' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -35,6 +35,7 @@ jobs:
           node-version: '17'
           registry-url: https://registry.npmjs.org/
       - run: npm ci
+      - run: npm run build
       - run: npx semantic-release@19
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
