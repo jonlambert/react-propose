@@ -1,8 +1,8 @@
 import 'jest';
 import '@testing-library/jest-dom/extend-expect';
 
-import React from 'react';
-import { render } from '@testing-library/react';
+import React, { createRef, useRef } from 'react';
+import { act, render } from '@testing-library/react';
 import { propose } from '.';
 
 describe('propose', () => {
@@ -28,6 +28,7 @@ describe('propose', () => {
 
     const Decorated = propose(Base, { title });
     const { getByRole, getByText } = render(<Decorated message={message} />);
+
     expect(getByRole('heading')).toHaveTextContent(title);
     expect(getByText(message)).toBeInTheDocument();
   });
@@ -72,5 +73,12 @@ describe('propose', () => {
 
     const Derived = propose(Base, { variant: 'primary' });
     render(<Derived onClick={() => {}} variant="primary" />);
+  });
+
+  it('accepts and passes down ref', () => {
+    const Decorated = propose('button', {});
+    const ref = createRef<HTMLButtonElement>();
+    render(<Decorated ref={ref as any}>Hello, world</Decorated>);
+    expect(ref.current?.innerHTML).toEqual('Hello, world');
   });
 });
