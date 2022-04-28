@@ -9,7 +9,7 @@ _Note: Project is under active development_
 TODO:
 
 - [x] Decorate functional components
-- [ ] Support forwarding refs
+- [~] Support forwarding refs
 - [x] Support intrinsic elements
 
 ```tsx
