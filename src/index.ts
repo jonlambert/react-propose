@@ -3,7 +3,6 @@ import React, {
   JSXElementConstructor,
   ComponentProps,
   forwardRef,
-  ForwardedRef,
   RefCallback,
   Ref,
 } from 'react';
