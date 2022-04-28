@@ -17,7 +17,7 @@ export function propose<
     ?
         | Ref<JSX.IntrinsicElements[ComponentType]>
         | RefCallback<JSX.IntrinsicElements[ComponentType]>
-    : "Unable to pass a ref to a function component"
+    : "Unable to pass a ref to a function component (yet!)"
 >(Component: ComponentType, props: SuppliedProps, displayName?: string) {
   type FinalProps = Omit<OriginalProps, keyof SuppliedProps> &
     Partial<SuppliedProps>;
