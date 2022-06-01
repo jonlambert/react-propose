@@ -13,7 +13,12 @@ TODO:
 - [x] Support intrinsic elements
 
 ```tsx
-// Given a base component...
+import { propose } from 'react-propose';
+```
+
+#### Given a base component:
+
+```tsx
 interface BaseMessageProps {
   message: string;
   title?: string;
@@ -24,21 +29,27 @@ const BaseMessage: React.FC<BaseMessageProps> = ({ message, title }) => (
     <p>{message}</p>
   </div>
 );
+```
 
-// Old:
+
+#### Before:
+
+```tsx
 interface FooBarMessageProps extends Omit<BaseMessageProps, 'title'> {}
 const FooBarMessage: React.FC<FooBarMessageProps> = ({ message }) => (
   <BaseMessage title="Foo" message={message} />
 );
+```
 
-// Using react-propose:
-import { propose } from 'react-propose';
+#### With `react-propose`:
+
+```tsx
 const FooBarMessage = propose(BaseMessage, { title: 'Foo' });
 ```
 
 ## With Chakra UI
 
-`styled-components` introduced a remarkably simple API to apply atomic styles to a component. Use `propose()` to achieve a similar DX, with full autocompletion and type safety:
+`styled-components` introduced a simple API to apply atomic styles to a component. Use `propose()` to achieve a similar DX, with full autocompletion and type safety:
 
 ```ts
 import { propose } from 'react-propose';
