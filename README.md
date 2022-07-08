@@ -8,7 +8,7 @@ This package exposes a tiny [(<1kb)](https://bundlephobia.com/package/react-prop
 import { withDefaultProps } from 'react-propose';
 ```
 
-#### Given a base component:
+#### Given a base component
 
 ```tsx
 interface BaseMessageProps {
@@ -22,7 +22,6 @@ const BaseMessage: React.FC<BaseMessageProps> = ({ message, title }) => (
   </div>
 );
 ```
-
 
 #### Before
 
