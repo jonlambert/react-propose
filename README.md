@@ -1,4 +1,4 @@
-# React Propose
+# React Propose / withDefaultProps
 
 Props, composed.
 
