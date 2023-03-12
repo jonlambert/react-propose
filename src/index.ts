@@ -11,7 +11,7 @@ type IntrinsicElementKeys = keyof JSX.IntrinsicElements;
 
 /**
  * Takes a supplied component or intrinsic HTML element key, and return a new component with the supplied default props set.
- * 
+ *
  * @param Component Either a React component, or any intrinsic element key (div, h1)
  * @param props The props to fill-in
  * @param displayName Optionally pass this for use in React
@@ -25,24 +25,28 @@ export function propose<
     ?
         | Ref<JSX.IntrinsicElements[ComponentType]>
         | RefCallback<JSX.IntrinsicElements[ComponentType]>
-    : "Unable to pass a ref to a function component (yet!)"
+    : ComponentType extends (props: infer P & { ref?: infer R }) => any
+    ? R
+    : never | undefined
 >(Component: ComponentType, props: SuppliedProps, displayName?: string) {
   type FinalProps = Omit<OriginalProps, keyof SuppliedProps> &
     Partial<SuppliedProps>;
 
   if (typeof Component === 'string') {
     const NewComponent = forwardRef<RefType, FinalProps>((p, ref) => {
-      const combinedProps = { ...props, ...p, ref };
-      return createElement(Component, combinedProps);
+      const combinedProps = { ...props, ...p };
+      return createElement(Component, { ...combinedProps, ref });
     });
     NewComponent.displayName = displayName;
     return NewComponent;
   }
 
-  const NewComponent: React.FC<FinalProps> = (p) => {
-    const combinedProps = { ...props, ...p };
-    return createElement(Component, combinedProps);
-  };
+  const NewComponent = forwardRef<RefType, FinalProps & { ref?: RefType }>(
+    (p, ref) => {
+      const combinedProps = { ...props, ...p };
+      return createElement(Component, { ...combinedProps, ref });
+    }
+  );
   NewComponent.displayName = displayName;
 
   return NewComponent;
@@ -50,7 +54,7 @@ export function propose<
 
 /**
  * Takes a supplied component or intrinsic HTML element key, and return a new component with the supplied default props set.
- * 
+ *
  * @param Component Either a React component, or any intrinsic element key (div, h1)
  * @param props The props to fill-in
  * @param displayName Optionally pass this for use in React

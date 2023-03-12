@@ -1,8 +1,8 @@
 import 'jest';
 import '@testing-library/jest-dom/extend-expect';
 
-import React, { createRef, useRef } from 'react';
-import { act, render } from '@testing-library/react';
+import React, { createRef, forwardRef } from 'react';
+import { render } from '@testing-library/react';
 import { propose } from '.';
 
 describe('propose', () => {
@@ -75,8 +75,18 @@ describe('propose', () => {
     render(<Derived onClick={() => {}} variant="primary" />);
   });
 
-  it('accepts and passes down ref', () => {
+  it('accepts and passes down ref for intrinsic element', () => {
     const Decorated = propose('button', {});
+    const ref = createRef<HTMLButtonElement>();
+    render(<Decorated ref={ref as any}>Hello, world</Decorated>);
+    expect(ref.current?.innerHTML).toEqual('Hello, world');
+  });
+
+  it('accepts and passes down ref for functional component', () => {
+    const Base = forwardRef<HTMLButtonElement, { children?: React.ReactNode }>(
+      (props, ref) => <button ref={ref}>{props.children}</button>
+    );
+    const Decorated = propose(Base, {});
     const ref = createRef<HTMLButtonElement>();
     render(<Decorated ref={ref as any}>Hello, world</Decorated>);
     expect(ref.current?.innerHTML).toEqual('Hello, world');
